@@ -1,4 +1,6 @@
 const { app } = require("./app");
+const { getAllUsers } = require("./database-queries/user-database-queries");
+const { createSampleUsers } = require("./main-migration-script");
 const { connectToDataBase } = require("./database-config");
 
 const PORT = process.env.PORT | 5000;
@@ -9,4 +11,7 @@ app.listen(PORT, () => {
 
 (async () => {
   await connectToDataBase();
+  const users = await getAllUsers();
+
+  users.length === 0 ? await createSampleUsers() : console.log(`database has already been populated`);
 })();

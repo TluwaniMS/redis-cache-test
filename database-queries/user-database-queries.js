@@ -1,6 +1,6 @@
 const { UserModel } = require("../database-models/User");
 
-const getAllUser = async () => {
+const getAllUsers = async () => {
   const users = await UserModel.find({});
 
   return users;
@@ -44,4 +44,4 @@ const createMultipleUsers = async (usersArray) => {
   return `Operation completed successfully.`;
 };
 
-module.exports = { getAllUser, getUserById, deleteUserById, updateUserById, createUser, createMultipleUsers };
+module.exports = { getAllUsers, getUserById, deleteUserById, updateUserById, createUser, createMultipleUsers };
