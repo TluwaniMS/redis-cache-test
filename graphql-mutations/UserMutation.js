@@ -1,6 +1,6 @@
 const { SupportingUserInput } = require("../graphql-models/SupportingUserGQLModel");
 const { GraphQLString, GraphQLNonNull } = require("graphql");
-const { deleteUserById, updateUserById, createUser } = require("../database-queries/user-database-queries");
+const {deleteUserByIdMutationResolver,updateUserByIdMutationResolver,createUserMutationResolver} = require('../resolvers/user-query-resolvers')
 
 const deleteUserByIdMutation = {
   type: GraphQLString,
@@ -8,7 +8,7 @@ const deleteUserByIdMutation = {
     _id: { type: new GraphQLNonNull(GraphQLString) }
   },
   resolve(parent, args) {
-    return deleteUserById(args._id);
+    return deleteUserByIdMutationResolver(args._id);
   }
 };
 
@@ -19,7 +19,7 @@ const updateUserByIdMutation = {
     userInfo: { type: new GraphQLNonNull(SupportingUserInput) }
   },
   resolve(parent, args) {
-    return updateUserById(args._id, args.userInfo);
+    return updateUserByIdMutationResolver(args._id, args.userInfo);
   }
 };
 
@@ -29,7 +29,7 @@ const createUserMutation = {
     userInfo: { type: new GraphQLNonNull(SupportingUserInput) }
   },
   resolve(parent, args) {
-    return createUser(args.userInfo);
+    return createUserMutationResolver(args.userInfo);
   }
 };
 
