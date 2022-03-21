@@ -12,6 +12,10 @@ This is a basic node-js project that I created to learn how to cache API data us
 ## NB!
 Please make sure you have a running instance of Mongodb and Redis-cache.
 
+* Step 1:
+
+Switch to the projects root directory and run "npm install" to install the rquired packages.
+
 # Dependencies:
 * CORS
 * EXPRESS
